@@ -1,18 +1,27 @@
 # PBCms
 A php based cms with only the basic function a cms needs
 
-## _standard classes and functions_
+## Navigation
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Modules](#Modules)
 
-#### -_App class_
-Contains bare base function for file managing
+## Installation
 
-###### -__File()__
+1. Start by [downloading](https://github.com/kearfy/pbcms/archive/master.zip) or git clone it into
+ your destination directory with the following command: ```git clone   https://github.com/OMSP/OMS```
+  **the next step is only required if pbcms is not place in the root directory**
+2. Navigate to the pbcms directory, then into ```app\internal\db\sys\config.json```, inside of _config.json_,
+ change ```details.root``` from _/_ to the sub directory where pbcms is located.
+3. Fire up your webserver and wait for the setup to initialize, now follow the steps in the webinterface
+ and you will have a stunning and fast website for your visitors!
 
-1. Make a file:
-```$app->file('make', 'example.txt');```
 
-2. Set content of a file:
-```$app->file('setcontent', 'example.txt', 'This is the content of this file');```
+## Usage
 
-3. Add content to a file:
-```$app->file('addcontent', 'example.txt', ' and this is even more content');```
+
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
