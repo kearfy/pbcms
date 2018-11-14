@@ -3,5 +3,6 @@ RewriteEngine On
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule .+ index.php?app_url=$0 [L,QSA]
+	DirectoryIndex index.php
 
 ErrorDocument 404 err/404
