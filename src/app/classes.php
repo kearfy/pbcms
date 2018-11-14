@@ -68,18 +68,8 @@
           } else {
             $this->file('empty', $file);
             $this->file('addcontent', $file, $content);
-          }
-        }
-      } else if ($function == 'addcontent') {
-        if (!$this->file('exists', $file)) {
-          return false;
-        } else {
-          if (!$content) {
-            return false;
-          } else {
-            $old = $this->file('content', $file);
             $file = fopen(__DIR__ . '/' . $file, "wb");
-            fwrite($file, $old . $content);
+            fwrite($file, $content);
             fclose($file);
           }
         }
