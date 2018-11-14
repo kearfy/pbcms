@@ -21,7 +21,48 @@ A php based cms with only the basic function a cms needs
 
 ## Usage
 
-
+* _App class_
+ 1. _File() Function_
+  - __Make__ a File:
+    _Returns true or false_
+    ```php
+      $app->file('make', 'filename.txt');
+    ```
+  - __Set content__ for a File:
+    _Returns true or false_
+    ```php
+      $app->file('setcontent', 'filename.txt', 'file content');
+    ```
+  - __Get content__ to a File:
+    _Returns the content of a file_
+    ```php
+      $app->file('content', 'filename.txt');
+    ```
+  - __Empty__ a File:
+    _Returns true or false_
+    ```php
+      $app->file('empty', 'filename.txt');
+    ```
+  - __Delete__ a File:
+    _Returns true of false_
+    ```php
+      $app->file('delete', 'filename.txt');
+    ```
+  - Check if a file __Exists__:
+    _Returns true or false_
+    ```php
+      $app->file('exists', 'filename.txt');
+    ```
+  - __Print__ a File:
+    _Returns true or false_
+    ```php
+      $app->file('print', 'filename.txt');
+    ```
+  - __Require__ a File:
+    _Returns true or false_
+    ```php
+      $app->file('require', 'filename.php');
+    ```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
