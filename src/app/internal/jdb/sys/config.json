@@ -4,7 +4,7 @@
     "desc" : "A php based cms that only contains the basic functions",
     "ssl" : false,
     "domain" : "localhost",
-    "root" : "/src"
+    "root" : ""
   },
   "jdb" : {
     "path" : "internal/jdb/"
