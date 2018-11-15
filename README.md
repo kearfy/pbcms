@@ -1,5 +1,5 @@
 # PBCms
-A php based cms with only the basic function a cms needs
+A PHP based CMS with only the basic functions a CMS needs.
 
 ## Navigation
 - [Installation](#Installation)
@@ -9,25 +9,25 @@ A php based cms with only the basic function a cms needs
 ## Installation
 
 1. Start by [downloading](https://github.com/kearfy/pbcms/archive/master.zip) or git clone it into
- your destination directory with the following command: ```git clone   https://github.com/OMSP/OMS```
+ your destination directory with the following command: ```git clone   https://github.com/kearfy/pbcms```
 
-  **the next step is only required if pbcms is not place in the root directory**
+  **The next step is only required if PBCMS is not placed in the root directory**
 
-2. Navigate to the pbcms directory, then into ```app\internal\db\sys\config.json```, inside of _config.json_,
- change ```details\root``` from ```/``` to the sub directory where pbcms is located.
-3. Fire up your webserver and wait for the setup to initialize, now follow the steps in the webinterface
+2. Navigate to the PBCMS directory, then into ```app\internal\db\sys\config.json```, inside of _config.json_,
+ change ```details\root``` from ```/``` to the sub directory where PBCMS is located.
+3. Fire up your webserver and wait for the setup to initialize, now follow the steps in the web-interface
  and you will have a stunning and fast website for your visitors!
 
 
 ## Usage
 
 * _App class_
-   1. _File() Function_
+   1. _file() Function_
 
       __Note: If a folder has been given in, only__ *exists*, *make* __and__ *delete* __will work...__
 
       __WARNING: Don't try to delete folders inside of the app folder it self, this will be fixed soon,
-        Subdirectory's will work fine...__
+        subdirectories will work fine...__
       - __Make__ a File:
         _Returns true or false_
         ```php
@@ -68,7 +68,7 @@ A php based cms with only the basic function a cms needs
         ```php
           $app->file('require', 'filename.php');
         ```
-   2. _Json() Function__
+   2. _json() Function__
       - __Encode__ an Array:
         _Returns json or false_
         ```php
@@ -84,7 +84,7 @@ A php based cms with only the basic function a cms needs
         ```php
           $app->json('print', $json);
         ```
-   3. _Jdb() Function_
+   3. _jdb() Function_
 
       __Note: This function basicly stores arrays in json file, if you want to store important data,
         consider using a database like mysql!__
