@@ -8,5 +8,12 @@
   },
   "jdb" : {
     "path" : "internal/jdb/"
+  },
+  "build" : {
+    "name" : "PDCms",
+    "runtime" : "pbcms",
+    "ver" : "0.0.1",
+    "state" : "alpha",
+    "for" : "dev"
   }
 }
