@@ -5,5 +5,8 @@
     "ssl" : false,
     "domain" : "localhost",
     "root" : "/src"
+  },
+  "jdb" : {
+    "path" : "internal/jdb/"
   }
 }
