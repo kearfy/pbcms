@@ -179,63 +179,72 @@
 
     public function jdb($function, $file, $data = false) {
       $jdbp = $this->config['jdb']['path'];
-      $file = (substr($file, -5) == '.json' ? substr($file, 0, -5) : $file);
+      $jdbp = (substr($jdbp, -1) !== '/' ? $jdbp . '/' : $jdbp);
+      $file = (substr($file, -5) !== '.json' ? $file . '.json' : $file);
       $file = (substr($file, 0, 1) == '/' ? substr($file, 1) : $file);
+      if (strpos($file, '/')) {
+        $parts = explode('/', $file);
+        $dir = implode('/', array_slice($parts, 0, -1)) . '/';
+        $filename = array_pop($parts);
+      } else {
+        $dir = '';
+        $filename = $file;
+      }
 
       if ($function == 'exists') {
-        if (!$this->file('exists', $jdbp . $file . '.json')) {
+        if (!$this->file('exists', $jdbp . $file)) {
           return false;
         } else {
           return true;
         }
       } else if ($function == 'open') {
-        if (!$this->jdb('exists', $jdbp . $file . '.json')) {
+        if (!$this->jdb('exists', $file)) {
           return false;
         } else {
-          return $this->json('decode', $this->file('open', $jdbp . $file . '.json'));
+          return $this->json('decode', $this->file('content', $jdbp . $file));
+        }
+      } else if ($function == 'new') {
+        if (!$this->jdb('exists', $file)) {
+          return $this->file('make', $jdbp . $file);
+        } else {
+          return false;
         }
       } else if ($function == 'update') {
-        if (!$this->jdb('exists', $jdbp . $file . '.json')) {
+        if (!$this->jdb('exists', $file)) {
           return false;
         } else {
           if (!$data) {
             return false;
           } else {
-            return $this->file('setcontent', $jdbp . $file . '.json', $this->json('encode', $data));
+            return $this->file('setcontent', $jdbp . $file, $this->json('encode', $data));
           }
-        }
-      } else if ($function == 'new') {
-        if (!$this->jdb('exists', $jdbp . $file . '.json')) {
-          if (strpos($file, '/')) {
-            return false;
-          } else {
-            return $this->file('make', $jdbp . $file . '.json');
-          }
-        } else {
-          return false;
-        }
-      } else if ($function == 'delete') {
-        if (!$this->jdb('exists', $jdbp . $file . '.json')) {
-          return false;
-        } else {
-          return $this->file('delete', $jdbp . $file . '.json');
         }
       } else if ($function == 'empty') {
-        if (!$this->jdb('exists', $jdbp . $file . '.json')) {
+        if (!$this->jdb('exists', $file)) {
           return false;
         } else {
-          return $this->file('empty', $jdbp . $file . '.json');
+          return $this->file('empty', $jdbp . $file);
+        }
+      } else if ($function == 'delete') {
+        if (!$this->jdb('exists', $file)) {
+          return false;
+        } else {
+          return $this->file('delete', $jdbp . $file);
         }
       } else {
         return false;
       }
     }
 
-    public function setheader($type) {
-      switch ($type) {
-        case 'json' :
-          header('Content-Type: application/json');
-          break;
+    public function setheader($input, $custom = false) {
+      if (!$custom) {
+        switch ($input) {
+          case 'json' :
+            header('Content-Type: application/json');
+            break;
+        }
+      } else {
+        header('Content-Type: ' . $input);
       }
     }
   }
