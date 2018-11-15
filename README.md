@@ -23,7 +23,9 @@ A php based cms with only the basic function a cms needs
 
 * _App class_
    1. _File() Function_
+
       __Note: If a folder has been given in, only__ *exists*, *make* __and__ *delete* __will work...__
+      
       __WARNING: Don't try to delete folders inside of the app folder it self, this will be fixed soon,
         Subdirectory's will work fine...__
       - __Make__ a File:
