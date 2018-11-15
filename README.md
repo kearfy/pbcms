@@ -25,7 +25,7 @@ A php based cms with only the basic function a cms needs
    1. _File() Function_
 
       __Note: If a folder has been given in, only__ *exists*, *make* __and__ *delete* __will work...__
-      
+
       __WARNING: Don't try to delete folders inside of the app folder it self, this will be fixed soon,
         Subdirectory's will work fine...__
       - __Make__ a File:
@@ -67,6 +67,56 @@ A php based cms with only the basic function a cms needs
         _Returns true or false_
         ```php
           $app->file('require', 'filename.php');
+        ```
+   2. _Json() Function__
+      - __Encode__ an Array:
+        _Returns json or false_
+        ```php
+          $app->json('encode', $array);
+        ```
+      - __Decode__ a Json string:
+        _Returns an array or false_
+        ```php
+          $app->json('decode', $json);
+        ```
+      - __Print__ a Json string:
+        _Prints a json string and sets a json header_
+        ```php
+          $app->json('print', $json);
+        ```
+   3. _Jdb() Function_
+
+      __Note: This function basicly stores arrays in json file, if you want to store important data,
+        consider using a database like mysql!__
+      - __New__ Database:
+        _Returns true or false_
+        ```php
+          $app->jdb('new', 'path/of/db');
+        ```
+      - __Open__ a Database:
+        _Returns array or false_
+        ```php
+          $app->jdb('open', 'path/of/db');
+        ```
+      - __Update__ a Database:
+        _Returns true or false_
+        ```php
+          $app->jdb('update', 'path/of/db', $newarray);
+        ```
+      - __Empty__ a Database:
+        _Returns true or false_
+        ```php
+          $app->jdb('empty', 'path/of/db');
+        ```
+      - __Delete__ a Database:
+        _Returns true or false_
+        ```php
+          $app->jdb('delete', 'path/of/db');
+        ```
+      - Check if a Database __Exists__:
+        _Returns true or false_
+        ```php
+          $app->jdb('exists', 'path/of/db');
         ```
 
 ## Contributing
