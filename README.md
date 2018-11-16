@@ -8,7 +8,7 @@ A PHP based CMS with only the basic functions a CMS needs.
 
 ## Installation
 
-1. Start by [downloading](https://github.com/kearfy/pbcms/archive/master.zip) or git clone it into
+1. Start by [downloading](https://github.com/kearfy/pbcms/archive/master.zip) or git clone the _src_ folder into
  your destination directory with the following command: ```git clone   https://github.com/kearfy/pbcms```
 
   **The next step is only required if PBCMS is not placed in the root directory**
