@@ -8,7 +8,7 @@ A php based cms with only the basic function a cms needs
 
 ## Installation
 
-1. Start by [downloading](https://github.com/kearfy/pbcms/archive/master.zip) or git clone the _src_ folder into
+1. Start by [downloading](https://github.com/kearfy/pbcms/archive/master.zip) or git clone it into
  your destination directory with the following command: ```git clone   https://github.com/OMSP/OMS```
 
   **the next step is only required if pbcms is not place in the root directory**
