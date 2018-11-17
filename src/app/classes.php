@@ -247,5 +247,143 @@
         header('Content-Type: ' . $input);
       }
     }
+
+    public function module($function, $file, $option = false) {
+      $mdl = $this->jdb('open', 'sys/modules');
+      $mdp = $this->config['modules']['path'];
+      $mdp = (substr($mdp, -1) !== '/' ? $mdp . '/' : $mdp);
+      $file = (substr($file, 0, 1) == '/' ? substr($file, 1) : $file);
+      $file = (substr($file, -1) == '/' ? substr($file, 0, -1) : $file);
+      if (strpos($file, '/')) {
+        $parts = explode('/', $file);
+        if (strpos(end($parts), '.')) {
+          $dir = implode('/', array_slice($parts, 0, -1)) . '/';
+          $filename = array_pop($parts);
+          if (substr($filename, -4) == '.zip') {
+            $type = 'zip';
+          } else {
+            $type = 'file';
+          }
+        } else {
+          $dir = $file . '/';
+          $filename = '';
+          $type = 'dir';
+        }
+      } else {
+        if (strpos($file, '.')) {
+          $filename = $file;
+          $dir = '';
+          if (substr($filename, -4) == '.zip') {
+            $type = 'zip';
+          } else {
+            $type = 'file';
+          }
+        } else {
+          $type = 'dir';
+          $filename = '';
+          $dir = '';
+        }
+      }
+
+      if ($function == 'exists') {
+        if ($type == 'dir') {
+          if (!$option) {
+            return $this->module('exists', $file, 'n');
+          } else if ($option == 'n') {
+            $result = false;
+            foreach($mdl as $i) {
+              if ($i['name'] == $file) {
+                $result = true;
+              }
+            }
+            return $result;
+          } else if ($option == 'p') {
+            $result = false;
+            foreach($mdl as $i) {
+              $path = (substr($i['dir'], -1) == '/' ? substr($i['dir'], 0, -1) : $i['dir']);
+              if ($path == $file) {
+                $result = true;
+              }
+            }
+            return $result;
+          } else if ($option == 'd') {
+            if (!$this->file('exists', $mdp . $dir)) {
+              return false;
+            } else {
+              return true;
+            }
+          } else {
+            return false;
+          }
+        } else if ($type == 'zip') {
+          if ($this->file('exists', $mdp . $file)) {
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          return false;
+        }
+      } else if ($function == 'info') {
+        if (!$this->module('exists', $file)) {
+          return false;
+        } else {
+          $m = $file;
+          $mdli = false;
+          foreach($mdl as $i) { if ($i['name'] == $m) { $mdli = $i; }}
+          if (!$mdli) {
+            return false;
+          } else {
+            if ($this->file('exists', $mdp . $i['dir'] . '/info.json')) {
+              return $this->json('decode', $this->file('content', $mdp . $i['dir'] . '/info.json'));
+            } else {
+              return false;
+            }
+          }
+        }
+      } else if ($function == 'load') {
+        if (!$file) {
+          foreach($mdl as $i) {
+            $this->module('load', $i['name']);
+          }
+        } else {
+          $m = $this->module('info', $file);
+          if (!$m) {
+            return false;
+          } else {
+            return $this->file('require', $mdp . $m['dir'] . '/main.php');
+          }
+        }
+      } else if ($function == 'install') {
+        echo 0;
+        echo $type;
+        if ($type == 'zip') {
+          echo 1;
+          if ($this->module('exists', 'installation/' . $file)) {
+            echo 2;
+            $ap = $mdp . 'installation/' . $file;
+            $zip = new ZipArchive;
+            $tmpf = 'tmp' . rand() . '/';
+            $this->file('make', $mdp . 'installation/' . $tmpf);
+            if (!$this->file('exists', $mdp . 'installation/' . $tmpf)) {
+              echo 3;
+              return false;
+            } else {
+              echo 4;
+              unset($t);
+              $a = $zip->open(__DIR__ . $ap);
+              if ($a) {
+                echo 5;
+                $zip->extractTo(__DIR__ . $mdp . 'installation/' . $tmpf, array('info.json'));
+              }
+            }
+          } else {
+            return false;
+          }
+        } else {
+          return false;
+        }
+      }
+    }
   }
 ?>
