@@ -1,0 +1,9 @@
+[
+  {
+    "id" : 1,
+    "name" : "router",
+    "dir" : "_/router/",
+    "class" : "Pbcrouter",
+    "enabled" : true
+  }
+]
