@@ -9,6 +9,9 @@
   "jdb" : {
     "path" : "internal/jdb/"
   },
+  "modules" : {
+    "path" : "modules/"
+  },
   "build" : {
     "name" : "PDCms",
     "runtime" : "pbcms",
