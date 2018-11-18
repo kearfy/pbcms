@@ -201,17 +201,12 @@ A PHP based CMS with only the basic functions a CMS needs.
 
 
 ## Contributing
-  _Credits_
-
-      __Micha de Vries__
-
-      [Instagram](https://www.instagram.com/kearfy/)
-
-      [Facebook](https://www.facebook.com/micha.devries.5)
-
-      [Twitter](https://twitter.com/Kearfy)
-
-      Discord: @kearfy#2835
+  _Credits_\n
+    __Micha de Vries__\n
+    [Instagram](https://www.instagram.com/kearfy/)\n
+    [Facebook](https://www.facebook.com/micha.devries.5)\n
+    [Twitter](https://twitter.com/Kearfy)\n
+    Discord: @kearfy#2835\n
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
