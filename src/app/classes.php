@@ -259,11 +259,7 @@
         if (strpos(end($parts), '.')) {
           $dir = implode('/', array_slice($parts, 0, -1)) . '/';
           $filename = array_pop($parts);
-          if (substr($filename, -4) == '.zip') {
-            $type = 'zip';
-          } else {
-            $type = 'file';
-          }
+          $type = 'file';
         } else {
           $dir = $file . '/';
           $filename = '';
@@ -273,11 +269,7 @@
         if (strpos($file, '.')) {
           $filename = $file;
           $dir = '';
-          if (substr($filename, -4) == '.zip') {
-            $type = 'zip';
-          } else {
-            $type = 'file';
-          }
+          $type = 'file';
         } else {
           $type = 'dir';
           $filename = '';
@@ -315,12 +307,6 @@
           } else {
             return false;
           }
-        } else if ($type == 'zip') {
-          if ($this->file('exists', $mdp . $file)) {
-            return true;
-          } else {
-            return false;
-          }
         } else {
           return false;
         }
@@ -354,31 +340,31 @@
             return $this->file('require', $mdp . $m['dir'] . '/main.php');
           }
         }
-      } else if ($function == 'install') {
-        echo 0;
-        echo $type;
-        if ($type == 'zip') {
-          echo 1;
-          if ($this->module('exists', 'installation/' . $file)) {
-            echo 2;
-            $ap = $mdp . 'installation/' . $file;
-            $zip = new ZipArchive;
-            $tmpf = 'tmp' . rand() . '/';
-            $this->file('make', $mdp . 'installation/' . $tmpf);
-            if (!$this->file('exists', $mdp . 'installation/' . $tmpf)) {
-              echo 3;
+      } else if ($function == 'register') {
+        if (!$this->module('exists', $file, 'p')) {
+          $i = $mdp . $file . '/info.json';
+          if (!$this->file('exists', $i)) {
+            return false;
+          } else {
+            $i = $this->json('decode', $this->file('content', $i));
+            if (!isset($i['name']) || !isset($i['dir']) || !isset($i['class'])) {
               return false;
             } else {
-              echo 4;
-              unset($t);
-              $a = $zip->open(__DIR__ . $ap);
-              if ($a) {
-                echo 5;
-                $zip->extractTo(__DIR__ . $mdp . 'installation/' . $tmpf, array('info.json'));
+              $id = count($mdl) + 1;
+              $md['id'] = $id;
+              $md['name'] = $i['name'];
+              $md['dir'] = $i['dir'];
+              $md['class'] = $i['class'];
+              $md['enabled'] = true;
+              array_push($mdl, $md);
+              $this->jdb('update', 'sys/modules', $mdl);
+              $this->module('load', $md['name']);
+              $module = new $md['class'];
+              if (method_exists($module, 'setup')) {
+                $module->setup();
               }
+              return true;
             }
-          } else {
-            return false;
           }
         } else {
           return false;
