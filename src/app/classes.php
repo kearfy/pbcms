@@ -244,7 +244,7 @@
             break;
         }
       } else {
-        header('Content-Type: ' . $input);
+        header($input);
       }
     }
 
