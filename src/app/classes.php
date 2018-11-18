@@ -351,6 +351,7 @@
               return false;
             } else {
               $id = count($mdl) + 1;
+              $i['id'] = $id;
               $md['id'] = $id;
               $md['name'] = $i['name'];
               $md['dir'] = $i['dir'];
@@ -358,6 +359,7 @@
               $md['enabled'] = true;
               array_push($mdl, $md);
               $this->jdb('update', 'sys/modules', $mdl);
+              $this->file('setcontent', $mdp . $file . '/info.json', $this->json('encode', $i));
               $this->module('load', $md['name']);
               $module = new $md['class'];
               if (method_exists($module, 'setup')) {
