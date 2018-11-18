@@ -1,8 +1,8 @@
 {
-  "id" : 1,
-  "name" : "router",
-  "dir" : "_/router/",
-  "class" : "Pbcrouter",
-  "author" : "Micha de Vries",
-  "desc" : "A basic system module for PBCMS that routes all the pages"
+    "name": "router",
+    "dir": "_\/router\/",
+    "class": "Pbcrouter",
+    "author": "Micha de Vries",
+    "desc": "A basic system module for PBCMS that routes all the pages",
+    "id": 1
 }

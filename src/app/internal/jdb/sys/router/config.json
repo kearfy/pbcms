@@ -1,0 +1,19 @@
+{
+    "defaults": {
+        "404": {
+            "controller": "err",
+            "handler": "404",
+            "url": "err\/404"
+        },
+        "403": {
+            "controller": "err",
+            "handler": "403",
+            "url": "err\/403"
+        },
+        "maintenance": {
+            "controller": "err",
+            "handler": "maintenance",
+            "url": "err\/maintenance"
+        }
+    }
+}

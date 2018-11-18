@@ -1,0 +1,13 @@
+{
+    "default": "home",
+    "home": {
+        "default": "index",
+        "index": {
+            "title": "home",
+            "target": "home.php",
+            "css": "rable.css\/home",
+            "js": "rable.js\/home",
+            "maintenance": false
+        }
+    }
+}
