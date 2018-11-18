@@ -177,7 +177,7 @@ A PHP based CMS with only the basic functions a CMS needs.
 ## Modules
 
 * _requirements for creating your own module for PBCMS_
-   1. _info.json_
+   1. _info.json_:
       This file must contain the following data:
       ```json
         {
@@ -188,14 +188,15 @@ A PHP based CMS with only the basic functions a CMS needs.
           "desc" : "A module made by John Doe"
         }
       ```
-    2. _main.php_
-      This file must contain the class specified in the _info.json_ file.
+    2. _main.php_:
 
-      This file will be included into the script, then you can call the
-      class to start executing your script.
+        This file must contain the class specified in the _info.json_ file.
 
-      If additional installation steps are required such as creating a
-      JDB, the make a public function called _setup()_
+        This file will be included into the script, then you can call the
+        class to start executing your script.
+
+        If additional installation steps are required such as creating a
+        JDB, the make a public function called _setup()_
     3. _Pack your module in a zip file if you want to share it with other developers._
 
 
