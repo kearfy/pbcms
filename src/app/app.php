@@ -5,7 +5,10 @@
     $app = new App;
 
     //script your code for your custom plugins in here...
-    echo $app->config['build']['name'] . ' ' . $app->config['build']['ver'] . ' ' . $app->config['build']['state'] . ' [FOR: ' . $app->config['build']['for'] . ' ]';
+
+
+    
+    //echo $app->config['build']['name'] . ' ' . $app->config['build']['ver'] . ' ' . $app->config['build']['state'] . ' [FOR: ' . $app->config['build']['for'] . ' ]';
   } else {
     echo 'Whoops, an internal error occured, this page will soon be more detailed and styled';
     die;
