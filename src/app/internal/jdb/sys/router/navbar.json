@@ -1,0 +1,32 @@
+{
+  "config" : {
+    "container" : true,
+    "color" : "dark",
+    "position" : "default"
+  },
+  "brand-href" : "-=home=-",
+  "brand-text" : ">sitename<",
+  "items" : [
+    {
+      "type" : "item",
+      "text" : "home",
+      "href" : "-=home=-",
+      "active" : false,
+      "disabled" : false
+    },
+    {
+      "type" : "dropdown",
+      "text" : "pages",
+      "items" : [
+        {
+          "text" : "About",
+          "href" : "-=about=-",
+          "active" : false,
+          "disabled" : false
+        }
+      ],
+      "active" : false,
+      "disabled" : false
+    }
+  ]
+}
