@@ -9,13 +9,13 @@ A PHP based CMS with only the basic functions a CMS needs.
 ## Installation
 
 1. Start by [downloading](https://github.com/kearfy/pbcms/archive/master.zip) or git clone the _src_ folder into
- your destination directory with the following command: ```git clone   https://github.com/kearfy/pbcms```
+ your destination directory using the following command: ```git clone   https://github.com/kearfy/pbcms```
 
-  **The next step is only required if PBCMS is not placed in the root directory**
+  **The next step is only required if PBCMS is not placed in the root directory!**
 
-2. Navigate to the PBCMS directory, then into ```app\internal\db\sys\config.json```, inside of _config.json_,
- change ```details\root``` from ```/``` to the sub directory where PBCMS is located.
-3. Fire up your webserver and wait for the setup to initialize, now follow the steps in the web-interface
+2. Navigate to the PBCMS directory, then into ```/app/internal/db/sys```, open _config.json_,
+ then change ```details\root``` from ```/``` to the sub directory where PBCMS is located.
+3. Fire up your webserver and wait for the setup to initialize, now follow the steps in the web interface
  and you will have a stunning and fast website for your visitors!
 
 
@@ -24,10 +24,10 @@ A PHP based CMS with only the basic functions a CMS needs.
 * _App class_
    1. _file() Function_
 
-      __Note: If a folder has been given in, only__ *exists*, *make* __and__ *delete* __will work...__
+      __Note: If a folder has been given in, only__ *exists*, *make* __and__ *delete* __will work.__
 
-      __WARNING: Don't try to delete folders inside of the app folder it self, this will be fixed soon,
-        subdirectories will work fine...__
+      __WARNING: Don't try to delete folders inside of the app folder itself, this will be fixed soon,
+        subdirectories will work fine.__
       - __Make__ a File:
         _Returns true or false_
         ```php
@@ -88,8 +88,8 @@ A PHP based CMS with only the basic functions a CMS needs.
 
    3. _setheader() Function__
 
-      __Note: We use Json as an example, for the registered headers, you can use one from the list
-        below, else, you can enter in any header supported by php.__
+      __Note: We use JSON as an example, for the registered headers, you can use one from the list
+        below, else, you can enter in any header supported by PHP.__
       __Registered__ header:
         _Sets a header_
         ```php
@@ -103,8 +103,8 @@ A PHP based CMS with only the basic functions a CMS needs.
 
    4. _jdb() Function_
 
-      __Note: This function basicly stores arrays in json file, if you want to store important data,
-        consider using a database like mysql!__
+      __Note: This function basically stores arrays in a JSON file, if you want to store important data,
+        consider using a database like MySQL!__
       - __New__ Database:
         _Returns true or false_
         ```php
@@ -167,7 +167,7 @@ A PHP based CMS with only the basic functions a CMS needs.
       - __Register__ a new Module:
         _Returns true or false_
 
-        __Note: When installing a module, the zip file must be unpacked and then
+        __Note: When installing a module, the zip file must be unpacked and then the
           module must be placed in the directory given in info.json, the module
           must be made correctly, read all about in in__ [Modules](#Modules)
         ```php
@@ -201,12 +201,17 @@ A PHP based CMS with only the basic functions a CMS needs.
 
 
 ## Contributing
-  _Credits_\n
-    __Micha de Vries__\n
-    [Instagram](https://www.instagram.com/kearfy/)\n
-    [Facebook](https://www.facebook.com/micha.devries.5)\n
-    [Twitter](https://twitter.com/Kearfy)\n
-    Discord: @kearfy#2835\n
+  _Credits_
+
+    __Micha de Vries__
+
+    [Instagram](https://www.instagram.com/kearfy/)
+
+    [Facebook](https://www.facebook.com/micha.devries.5)
+
+    [Twitter](https://twitter.com/Kearfy)
+
+    Discord: @kearfy#2835
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
